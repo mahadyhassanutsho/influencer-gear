@@ -73,6 +73,10 @@ select {
   font: inherit;
 }
 
+button {
+  cursor: pointer;
+}
+
 p,
 h1,
 h2,
@@ -107,19 +111,44 @@ ul {
   list-style: none;
 }
 
-/* Actual Styles */
+/* General Styles */
 body {
   font-family: var(--font-poppins);
-  color: var(--clr-dark-900);
+  color: var(--clr-dark-600);
   background-color: var(--clr-white);
 }
 
 .wrapper {
-  max-width: 1920px;
+  max-width: 1600px;
   margin-inline: auto;
   padding-inline: clamp(1rem, 5vw, 10%);
   padding-block: 4rem;
 }
+
+.bg-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.btn-primary {
+  padding: 0.75rem 1.75rem;
+  background-color: var(--clr-primary);
+  color: var(--clr-white);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-lg);
+  border: 1px solid var(--clr-primary);
+  border-radius: 2rem;
+  transition: color 0.4s ease-in-out, background-color 0.5s ease-in-out;
+}
+
+.btn-primary:hover {
+  color: var(--clr-primary);
+  background-color: transparent;
+}
+
+/* Primary Nav */
 
 .primary-nav {
   display: flex;
@@ -153,7 +182,71 @@ body {
   border-color: var(--clr-dark-600);
 }
 
-@media screen and (width <= 1080px) {
+/* Hero */
+.banner {
+  display: grid;
+  gap: 5rem;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 0.25rem 1rem;
+  height: fit-content;
+}
+
+.hero-content {
+  display: grid;
+  gap: 1rem;
+  justify-items: left;
+}
+
+.hero-title {
+  font-size: var(--text-5xl);
+  font-weight: var(--font-semibold);
+}
+
+.hero-subtitle {
+  font-size: var(--text-base);
+}
+
+.hero-img {
+  position: relative;
+}
+
+.sponsors {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-block: 2rem;
+  overflow: hidden; /* ✅ keeps content inside */
+}
+
+.sponsors::before,
+.sponsors::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #ccc, transparent);
+}
+
+.sponsors::before {
+  top: 0;
+}
+
+.sponsors::after {
+  bottom: 0;
+}
+
+@media screen and (width <= 960px) {
+  .wrapper {
+    padding-block: 1rem;
+  }
+
   .primary-nav {
     gap: 1rem;
     flex-direction: column;
@@ -162,5 +255,16 @@ body {
   .nav-list {
     gap: 1rem;
     flex-wrap: wrap;
+  }
+
+  .hero {
+    flex-direction: column-reverse;
+    gap: 2.5rem;
+  }
+
+  .sponsors {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 }
