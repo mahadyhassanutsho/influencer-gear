@@ -278,7 +278,7 @@ body {
 .product-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .product-card {
@@ -366,6 +366,7 @@ body {
 
   .product-list {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .featured-product {
